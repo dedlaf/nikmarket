@@ -1,0 +1,20 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'mark/css/main.css'  %}">
+    <script src="{% static 'mark/js/main.js' %}">        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });</script>
+</head>
+<body>
+    {% include 'mark/header.html' %}
+    <div class="archive">
+        {% for product in products %}<div> <h1>{{product.name}}</h1> <img style="height:130px;width:60%;" src="{{ product.img }}" alt="no"> <h1>{{ product.price }} руб.</h1>
+    {% if user.is_authenticated %}<button id="{{ product.id }}">Добавить в корзину</button>{% endif %}</div>{% endfor %}
+    </div>
+</body>
+</html>

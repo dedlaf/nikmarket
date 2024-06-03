@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+margin: 0 auto;
+max-width:1920px;
+}
+
+.header{
+    padding: 20px;
+    position:static;
+    width: fit-content;
+    margin:0% auto;
+}
+
+.header a{
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    padding: 10 20 10 20;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 23px;
+    margin: 30 60 0 60;
+}
+
+.header a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+}
+
+.anim::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0074d9; /* Цвет обводки */
+  transform: scaleX(0); /* Начальное значение ширины обводки */
+  transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+.anim:hover::after {
+  transform: scaleX(1); /* Увеличиваем ширину обводки при наведении */
+}
+
+
+
+
+.header h1{
+    width:fit-content;
+    padding:10 20 10 20;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 23px;
+    margin:0 auto;
+}
+
+.archive {
+  padding: 10px 8% 0 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-gap: 32px;
+  grid-auto-flow: dense;
+}
+
+.archive div{
+    text-align: center;
+    color: #333;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+/* Широкие блоки постов */
+.article:nth-child(31n + 1) {
+  grid-column: 1 / -1;
+}
+.article:nth-child(16n + 2) {
+  grid-column: -3 / -1;
+}
+.article:nth-child(16n + 10) {
+  grid-column: 1 / -2;
+}
+
+/* Одноколоночное отображение на мобильных */
+@media (max-width: 459px) {
+  .archive {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.archive div button {
+width:60%;
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.archive div button:hover {
+    background-color: #2980b9;
+}

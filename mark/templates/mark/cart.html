@@ -1,0 +1,60 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+        <style>
+        /* Стили для списка */
+        .cart {
+                color: #333;
+                font-family: sans-serif;
+                font-size: 30px;
+                text-align: center;
+                margin: 2%;
+                list-style: none;
+                padding: 0;
+        }
+
+        .cart li {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 40px;
+        }
+
+        /* Стили для заголовка */
+        .total-price {
+                font-family: sans-serif;
+                text-align: center;
+                font-size: 40;
+        }
+
+        .pus{
+            width: 20px;
+            font-family: sans-serif;
+            font-size: 15px;
+            border-radius:50%;
+        }
+
+    </style>
+    <script src="{% static 'mark/js/cart.js' %}"></script>
+</head>
+<body>
+
+    {% include 'mark/header.html' %}
+    {% if user.is_authenticated %}
+
+    <ul class="cart">
+        {% for item in cart %}
+            <li>{{item.product}}: <span id="{{item.product.id|add:300}}">{{item.quantity}}</span> <button id="{{item.product.id}}" class="pus" >+</button> <button id="{{item.product.id|add:100}}" class="pus">-</button></li>
+        {% endfor %}
+    </ul>
+    <h1 class="total-price">
+        Сумма заказа: {{total}} руб.
+    </h1>
+
+
+    {% else %}
+    <h1>Вы не авторизованы</h1>
+    {% endif %}
+</body>
+</html>

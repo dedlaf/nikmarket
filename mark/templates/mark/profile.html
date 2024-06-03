@@ -1,0 +1,33 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="{% static 'mark/css/profile.css'  %}">
+
+</head>
+<body>
+    {% include 'mark/header.html' %}
+
+
+    <div class="profile">
+        <h1 style="display:inline-block;" >Профиль пользователя {{ user.username }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <h class="my-label">{{ field.label_tag }}</h>
+                {{field}}<br>
+            {% endfor %}
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <h1>Список покупок</h1>
+        <ul class="list-ord" style="list-style-type: none; ">
+            {% for order in orders %}
+                <li><span style="font-size:30px;"> Номер заказа: {{ order.order_number }}</span><br> <span style="padding:10px;">Товары: {% for i in order.products.all %}{{ i }}{% if not forloop.last %},{% endif %}{% endfor %}</span><br> <span style="padding:10px">Сумма заказа: {{ order.total_amount }}</span></li><br>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>

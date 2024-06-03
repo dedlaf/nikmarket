@@ -1,0 +1,49 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'mark/css/register.css'  %}">
+    <style>
+        .password-container {
+            position: relative;
+        }
+
+        .password-checkbox {
+            position: absolute;
+            right: 30%;
+            top: 35%;
+            width: fit-content !important;
+            height: fit-content !important;
+            margin: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    {% include 'mark/header.html' %}
+    <div class="main">
+        <h1>Регистрация</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="login" placeholder="Логин">
+            <div class="password-container">
+                <input type="password" name="password" id="password" placeholder="Пароль">
+                <input type="checkbox" class="password-checkbox" onclick="togglePasswordVisibility()">
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+        <a href="auth">Войти</a>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

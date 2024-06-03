@@ -1,0 +1,61 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+margin: 0 auto;
+max-width:1920px;
+}
+
+.header{
+    padding: 20px;
+    position:static;
+    width: fit-content;
+    margin:0% auto;
+}
+
+.header a{
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    padding: 10 20 10 20;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 23px;
+    margin: 30 60 0 60;
+}
+
+.header a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+}
+
+.anim::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0074d9; /* Цвет обводки */
+  transform: scaleX(0); /* Начальное значение ширины обводки */
+  transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+.anim:hover::after {
+  transform: scaleX(1); /* Увеличиваем ширину обводки при наведении */
+}
+
+
+
+
+.header h1{
+    width:fit-content;
+    padding:10 20 10 20;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 23px;
+    margin:0 auto;
+}

@@ -1,0 +1,21 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'mark/css/auth.css'  %}">
+</head>
+<body>
+    {% include 'mark/header.html' %}
+    <div class="main">
+        <h1>Войти</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="login" placeholder="Логин">
+            <input type="password" name="password" placeholder="Пароль">
+            <input type="submit" value="Войти">
+        </form>
+        <a href="register">Зарегистрироваться</a>
+    </div>
+</body>
+</html>
