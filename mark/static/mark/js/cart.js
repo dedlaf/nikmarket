@@ -26,7 +26,7 @@ function addToCart(productId) {
             if (response.ok) {
                 kol = document.getElementById(Number(productId)+300)
                 kol.textContent = Number(kol.textContent)+1
-
+                location.reload()
             } else {
 
             }
@@ -50,6 +50,7 @@ function minToCart(productId) {
     })
         .then(response => {
             if (response.ok) {
+            location.reload()
 
             } else {
             }

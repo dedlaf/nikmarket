@@ -25,11 +25,9 @@
         <h1>Регистрация</h1>
         <form method="post">
             {% csrf_token %}
-            <input type="text" name="login" placeholder="Логин">
-            <div class="password-container">
-                <input type="password" name="password" id="password" placeholder="Пароль">
-                <input type="checkbox" class="password-checkbox" onclick="togglePasswordVisibility()">
-            </div>
+            {% for f in form %}
+            {{f}}
+            {% endfor %}
             <input type="submit" value="Зарегистрироваться">
         </form>
         <a href="auth">Войти</a>

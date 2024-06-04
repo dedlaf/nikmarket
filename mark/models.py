@@ -41,3 +41,12 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.cart} {self.product.name} ({self.quantity} pcs)"
+
+
+class Task(models.Model):
+    title = models.CharField(max_length=100)
+    main_cont = models.CharField(max_length=1000)
+    image = models.ImageField(upload_to='img/task/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title

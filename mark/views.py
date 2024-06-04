@@ -3,7 +3,7 @@ from .models import UserProfile, Order, Product, Cart, CartItem
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm
+from .forms import ProfileForm, TaskForm, RegForm
 from django.http import JsonResponse
 
 
@@ -35,8 +35,10 @@ def auth(request):
 def register(request):
     if request.method == 'POST':
         # Получите данные из формы
-        login = request.POST.get('login')
+        login = request.POST.get('username')
         password = request.POST.get('password')
+        print(login, '14314')
+        email = request.POST.get('email')
         # Создайте пользователя
         user = User.objects.create_user(username=login, password=password)
         # Создайте профиль пользователя
@@ -44,7 +46,8 @@ def register(request):
         # Перенаправьте пользователя на другую страницу (например, на страницу входа)
         return redirect('/auth')
 
-    return render(request, 'mark/register.html')
+
+    return render(request, 'mark/register.html', {'form': RegForm()})
 
 
 @login_required
@@ -74,7 +77,7 @@ def profile_admin(request):
 
 def logouting(request):
     logout(request)
-    return redirect('/')
+    return redirect('/auth')
 
 
 def cart(request):
@@ -132,3 +135,18 @@ def min_to_cart(request, product_id):
         return JsonResponse({'message': 'Товар успешно добавлен в корзину'})
 
     return JsonResponse({'message': 'Неверный метод запроса'}, status=400)
+
+
+def task(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = request.FILES.get('image')
+            print(image)
+            form.image = image
+            form.save()
+            return redirect('/task')
+        title = request.POST.get('title')
+        text = request.POST.get('main_cont')
+
+    return render(request, 'mark/task.html', {'form':TaskForm()})

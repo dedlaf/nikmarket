@@ -3,11 +3,11 @@
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 
 <div class="header">
-    <h1>NikMarket</h1>
-    <a class="anim" href="/">Главная</a>
+    <h1>Авоська</h1>
+    <a class="anim" href="{% if user.is_authenticated %}/profile{% else %}auth{% endif %}">Профиль</a>
     <a class="anim" href="">О нас</a>
     <a class="anim" href="/cart">Корзина</a>
-    <a class="anim" href="{% if user.is_authenticated %}profile{% else %}auth{% endif %}">Профиль</a>
+    <a class="anim" href="/">Каталог</a>
 
     {% if user.is_staff %}
         <a href="profile-admin" class="anim">Admin</a>

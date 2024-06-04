@@ -1,0 +1,17 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'mark/css/task.css' %}">
+</head>
+<body>
+    {% include 'mark/header.html' %}
+    <form method="POST" enctype="multipart/form-data">
+        <h1 style="text-align: center;" >Создать заявку</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
